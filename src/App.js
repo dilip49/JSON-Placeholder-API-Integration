@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import './App.scss';
+import { Route, Switch } from 'react-router-dom';
+import Posts from './components/Posts/Posts';
+import Post from './components/Posts/Post/Post';
+import NewPost from './components/Posts/NewPost/NewPost';
+class App extends Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       name: "dilip"
+    }
+  }
+  
+  handleClick = () => {
+    this.setState({
+      name: "Wangoes"
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <Switch>
+            <Route path="/posts/:id" component={Post} />
+            <Route path="/newpost" component={NewPost} />
+            <Route path="/" component={Posts} /> 
+                   
+        </Switch> 
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
+
